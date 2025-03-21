@@ -4,6 +4,7 @@ const budgetSlice = createSlice({
   initialState: {
     newBudget: 0,
     expenses: [],
+    expensesHistory: [],
     totalExpense: 0,
     remainingBudget: 0,
   },
@@ -21,7 +22,12 @@ const budgetSlice = createSlice({
     },
     deleteExpense: (state, action) => {
       state.expenses = state.expenses.filter(
-        (expense) => expense.id !== action.payload
+        (expense) => (
+          expense.id == action.payload
+            ? state.expensesHistory.push(expense)
+            : "",
+          expense.id !== action.payload
+        )
       );
     },
   },

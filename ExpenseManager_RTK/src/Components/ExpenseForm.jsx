@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addNewExpense } from "../features/budget/budgetSlice";
+import { addNewExpense } from "../features/budgetSlice";
 const ExpenseForm = () => {
   const dispatch = useDispatch();
   const remainingBudget = useSelector((state) => state.budget.remainingBudget);

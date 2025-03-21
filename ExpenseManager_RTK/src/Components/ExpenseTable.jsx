@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Trash2 } from "lucide-react";
-import { deleteExpense } from "../features/budget/budgetSlice";
+import { deleteExpense } from "../features/budgetSlice";
 const ExpenseTable = (props) => {
   const expenses = useSelector((state) => state.budget.expenses);
   const dispatch = useDispatch();

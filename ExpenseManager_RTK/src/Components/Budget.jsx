@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setNewBudget } from "../features/budget/budgetSlice";
+import { setNewBudget } from "../features/budgetSlice";
 const Budget = () => {
   const dispatch = useDispatch();
   const newBudget = useSelector((state) => state.budget.newBudget);

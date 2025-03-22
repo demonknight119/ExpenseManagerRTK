@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setNewBudget } from "../features/budgetSlice";
+import { RotateCcw } from "lucide-react";
+import { resetBudget } from "../features/budgetSlice";
 const Budget = () => {
   const dispatch = useDispatch();
   const newBudget = useSelector((state) => state.budget.newBudget);
@@ -27,6 +29,12 @@ const Budget = () => {
           onClick={handleSetBudget}
         >
           Set Budget
+        </button>
+        <button
+          className="bg-orange-400 text-white rounded-md py-2 px-4 ml-4"
+          onClick={() => dispatch(resetBudget())}
+        >
+          <RotateCcw />
         </button>
       </div>
       <div className=" md:flex justify-between mt-10  grid grid-cols-1 gap-5">

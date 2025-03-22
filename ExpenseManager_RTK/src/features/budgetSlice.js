@@ -30,9 +30,17 @@ const budgetSlice = createSlice({
         )
       );
     },
+    resetBudget: (state) => {
+      state.newBudget = 0;
+      state.expenses = [];
+      state.expensesHistory = [];
+      state.remainingBudget = 0;
+      state.totalExpense = 0;
+      console.log(state);
+    },
   },
 });
 
-export const { setNewBudget, addNewExpense, deleteExpense } =
+export const { setNewBudget, addNewExpense, deleteExpense, resetBudget } =
   budgetSlice.actions;
 export default budgetSlice.reducer;

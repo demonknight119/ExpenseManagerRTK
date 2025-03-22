@@ -6,14 +6,17 @@ const Budget = () => {
   const newBudget = useSelector((state) => state.budget.newBudget);
   const remainingBudget = useSelector((state) => state.budget.remainingBudget);
   const totalExpense = useSelector((state) => state.budget.totalExpense);
-  const [budget, setBudget] = useState(0);
+  const [budget, setBudget] = useState("");
   const handleSetBudget = () => {
+    if (!budget) return;
     dispatch(setNewBudget(budget));
+    setBudget(0);
   };
   return (
     <div className="shadow-md p-4 m-4">
       <div className="flex w-full">
         <input
+          value={budget}
           onChange={(e) => setBudget(e.target.value)}
           type="number"
           placeholder="Enter your budget"

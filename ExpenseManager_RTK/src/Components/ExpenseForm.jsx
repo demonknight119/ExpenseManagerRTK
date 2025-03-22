@@ -5,7 +5,7 @@ const ExpenseForm = () => {
   const dispatch = useDispatch();
   const remainingBudget = useSelector((state) => state.budget.remainingBudget);
   const [desc, setDesc] = useState("");
-  const [amount, setAmount] = useState(0);
+  const [amount, setAmount] = useState("");
   const [category, setCategory] = useState("other");
 
   const handleFormSubmit = (e) => {
@@ -17,12 +17,23 @@ const ExpenseForm = () => {
       category,
       id: Date.now(),
     };
+    if (!newExpenses.desc || newExpenses.amount <= 0) {
+      alert("Please provide valid inputs");
+      resetValues();
+      return;
+    }
 
     if (Number(newExpenses.amount) > remainingBudget) {
       alert("Over Budget");
+      resetValues();
       return;
     }
     dispatch(addNewExpense(newExpenses));
+    function resetValues() {
+      setAmount("");
+      setDesc("");
+    }
+    resetValues();
   };
   return (
     <form
@@ -31,18 +42,21 @@ const ExpenseForm = () => {
     >
       <div className="grid md:grid-cols-4 gap-4 grid-cols-1">
         <input
+          value={desc}
           type="text"
           placeholder="Enter Decsription"
           className="focus:outline-none border-2 border-gray-200 rounded-md p-2"
           onChange={(e) => setDesc(e.target.value)}
         />
         <input
+          value={amount}
           onChange={(e) => setAmount(Number(e.target.value))}
           type="number"
           placeholder="Enter Amount"
           className="focus:outline-none border-2 border-gray-200 rounded-md p-2 "
         />
         <select
+          value={"other"}
           onChange={(e) => setCategory(e.target.value)}
           name="category"
           id="category"

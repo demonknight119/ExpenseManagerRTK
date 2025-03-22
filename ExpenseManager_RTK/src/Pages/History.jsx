@@ -3,7 +3,7 @@ import ExpenseTable from "../Components/ExpenseTable";
 import { useSelector } from "react-redux";
 const History = () => {
   const history = useSelector((state) => state.budget.expensesHistory);
-  console.log(history);
+  // console.log(history);
   return (
     <div className="mt-6 shadow-md m-4 p-6 overflow-x-auto">
       <table className="w-full table-fixed">

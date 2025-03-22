@@ -31,12 +31,13 @@ const budgetSlice = createSlice({
       );
     },
     resetBudget: (state) => {
-      state.newBudget = 0;
-      state.expenses = [];
-      state.expensesHistory = [];
-      state.remainingBudget = 0;
-      state.totalExpense = 0;
-      console.log(state);
+      Object.assign(state, {
+        newBudget: 0,
+        expenses: [],
+        expensesHistory: [],
+        totalExpense: 0,
+        remainingBudget: 0,
+      });
     },
   },
 });
